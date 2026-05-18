@@ -57,7 +57,18 @@
                     </div>
                 </div>
             </div>
-            <div class="cat-posts-box" id="posts-container">
+            <div class="cat-posts-box">
+                <div class="post-filter" id="post-filter">
+                    filtering options
+                    <button onclick="sortBasedOnNew()">
+                        new
+                    </button>
+                    <button onclick="sortBasedOnOld()">
+                        old
+                    </button>
+                </div>
+                <div id="posts-container">
+                </div>
                 <!-- <div class="post-box">
                     <div class="post-header">
                         <a href="../htmls/profile.html" class="post-user"></a>

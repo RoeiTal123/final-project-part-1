@@ -1,0 +1,126 @@
+@import "../general/general.css";
+
+@media (min-width: 900px){
+    .cat-communities-box{
+        display: flex;
+    }
+    .cat-chats-box{
+        display: flex;
+    }
+    .cat-posts-box{
+        width: 40%;
+    }
+}
+
+@media (max-width: 900px){
+    .cat-communities-box{
+        display: none;
+    }
+    .cat-chats-box{
+        display: none;
+    }
+    .cat-posts-box{
+        width: 60%;
+    }
+    .body{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px){
+    .cat-communities-box{
+        display: none;
+    }
+    .cat-chats-box{
+        display: none;
+    }
+    .cat-posts-box{
+        width: 100%;
+    }
+}
+
+.cat-communities-box{
+    /* display: flex; */
+    flex-direction: column;
+    height: calc(100vh - 96px);
+    width: 25%;
+    min-width: 210px;
+    padding: 16px;
+    gap: 16px;
+    overflow-y: auto;
+    scrollbar-color: lightgray white;
+}
+
+.cat-communities-box .communities-box{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.communities-box .community{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.community .community-logo{
+    height: 64px;
+    width: 64px;
+    background-color: rgb(209, 32, 200);
+    border-radius: 50%;
+}
+
+/*  */
+
+.cat-posts-box{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 96px);
+    /* width: 40%; */
+    min-width: 360px;
+    border: 1px solid black;
+    overflow-y: auto;
+    scrollbar-color: lightgray white;
+}
+
+.cat-posts-box .post-box{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    max-width: 100%;
+    height: 50%;
+    padding: 16px;
+    gap: 16px;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #A4DAFB 100%);
+}
+
+.post-box .post-header{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: fit-content;
+}
+
+.post-header .post-user{
+    height: 64px;
+    width: 64px;
+    background-color: rgb(209, 32, 200);
+    border-radius: 50%;
+}
+
+.post-box .post-media{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.post-media .post-image{
+    width: 180px;
+    height: 180px;
+}
+
+.cat-chats-box{
+    width: 25%;
+    min-width: 210px;
+}

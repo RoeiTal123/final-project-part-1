@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "flower";
+  src: url("../general/IndieFlower-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root{
+    --main-font: "flower", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--main-font);
+}
+
+.root{
+    width: 100%;
+    overflow: auto;
+    font-size: 16px;
+}
+
+html{
+    display: flex;
+    flex-direction: column;
+    flex-grow: unset;
+    font-size: 16px;
+    width: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    overflow-y: hidden;
+}
+
+img{
+    height: 100%;
+    aspect-ratio: unset;
+}
+
+.header{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 96px;
+    width: 100%;
+    padding: 16px;
+    background-color: #F5B277;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #BAE9EB 0%, #5BC6E4 100%);
+    background: linear-gradient(to bottom, #BBFFAB 0%, #9BE18B 100%);
+}
+
+.logo-img{
+    height: 50px;
+}
+
+.on-right{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.map-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 64px;
+    border: 0;
+    background: linear-gradient(to bottom, #BBFFAB 0%, #9BE18B 100%);
+    
+}
+
+.map-logo{
+    height: 50px;
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    margin-block-start: 96px;
+}

@@ -59,48 +59,34 @@
             </div>
             <div class="cat-posts-box">
                 <div class="post-filter" id="post-filter">
-                    filtering options
-                    <button onclick="sortBasedOnNew()">
-                        new
-                    </button>
-                    <button onclick="sortBasedOnOld()">
-                        old
-                    </button>
+                <label>
+                    <input type="radio" name="sort" value="new" onchange="alterPosts(this.value)">
+                    New
+                </label>
+
+                <label>
+                    <input type="radio" name="sort" value="old" onchange="alterPosts(this.value)">
+                    Old
+                </label>
+
+                <label>
+                    <input type="radio" name="sort" value="day" onchange="alterPosts(this.value)">
+                    Day
+                </label>
+
+                <label>
+                    <input type="radio" name="sort" value="week" onchange="alterPosts(this.value)">
+                    Week
+                </label>
+
+                <label>
+                    <input type="radio" name="sort" value="month" onchange="alterPosts(this.value)">
+                    Month
+                </label>
+
                 </div>
-                <div id="posts-container">
+                <div class="posts-container" id="posts-container">
                 </div>
-                <!-- <div class="post-box">
-                    <div class="post-header">
-                        <a href="../htmls/profile.html" class="post-user"></a>
-                        <div class="post-title">title</div>
-                    </div>
-                    <div class="post-description">description</div>
-                    <div class="post-media"><img class="post-image" src="../design/images/Cat Icon.png"></div>
-                </div>
-                <div class="post-box">
-                    <div class="post-header">
-                        <a href="../htmls/profile.html" class="post-user"></a>
-                        <div class="post-title">title</div>
-                    </div>
-                    <div class="post-description">description</div>
-                    <div class="post-media"><img class="post-image" src="../design/images/Cat Icon.png"></div>
-                </div>
-                <div class="post-box">
-                    <div class="post-header">
-                        <a href="../htmls/profile.html" class="post-user"></a>
-                        <div class="post-title">title</div>
-                    </div>
-                    <div class="post-description">description</div>
-                    <div class="post-media"><img class="post-image" src="../design/images/Cat Icon.png"></div>
-                </div>
-                <div class="post-box">
-                    <div class="post-header">
-                        <a href="../htmls/profile.html" class="post-user"></a>
-                        <div class="post-title">title</div>
-                    </div>
-                    <div class="post-description">description</div>
-                    <div class="post-media"><img class="post-image" src="../design/images/Cat Icon.png"></div>
-                </div> -->
             </div>
             <div class="cat-chats-box">chats here</div>
         </div>

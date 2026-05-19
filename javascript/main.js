@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", Main)
 
-let sortMethod = "none"
+let rendertMethod = "none"
 
 const posts = [
     {
@@ -122,11 +122,11 @@ function renderPosts(list = posts) {
     console.log(list)
     console.log("posts rendered")
     const postsContainer = document.getElementById("posts-container")
-    if(list != null){
+    if (list != null) {
 
         postsContainer.innerHTML = list.map(post => `
             <div class="post-box">
-            <div class="post-header">
+                <div class="post-header">
                            <a href="../htmls/profile.html?id=${post._ownerid}" class="post-user"></a>
                            <div class="post-header-right">
                            <div class="post-date">${getTimeAgo(post.createdAt)}</div>
@@ -135,12 +135,12 @@ function renderPosts(list = posts) {
                        </div>
                        <div class="post-description">${post.description}</div>
                        ${post.mediaType !== "none"
-            ? `<div class="post-media">
-            ${post.mediaType === "image"
-                ? `<img class="post-image" src="${post.mediaUrl}" />`
-                : `<video class="post-video" controls src="${post.mediaUrl}"></video>`
-            }
-            </div>`: ""}
+                         ? `<div class="post-media">
+                               ${post.mediaType === "image"
+                                 ? `<img class="post-image" src="${post.mediaUrl}" />`
+                                 : `<video class="post-video" controls src="${post.mediaUrl}"></video>`
+                }
+                </div>`: ""}
             <div class="post-footer">footer</div>
             </div>`).
             join("")
@@ -171,20 +171,40 @@ function getTimeAgo(timestamp) {
     return `${days}d ago`
 }
 
-function sortBasedOnNew() {
-    if(sortMethod === "new") return
-    sortMethod = "new"
-    const sorted = [...posts].sort((a, b) => b.createdAt - a.createdAt)
+function alterPosts(value = rendertMethod) {
+    let alteredPosts
+    if (value === rendertMethod) return
 
-    renderPosts(sorted)
-    console.log("sorted by new")
-}
+    switch (value) {
 
-function sortBasedOnOld() {
-    if(sortMethod === "old") return
-    sortMethod = "old"
-    const sorted = [...posts].sort((a, b) => a.createdAt - b.createdAt)
+        case "new" :
+            sortMethod = "new"
+            alteredPosts = [...posts].sort((a, b) => b.createdAt - a.createdAt)
+            break
 
-    renderPosts(sorted)
-    console.log("sorted by old")
+        case "old" :
+            sortMethod = "old"
+            alteredPosts = [...posts].sort((a, b) => a.createdAt - b.createdAt)
+            break
+            
+        case "day" :
+            sortMethod = "day"
+            alteredPosts = [...posts].filter(post => 
+                post.createdAt >= Date.now() - (1000 * 60 * 60 * 24))
+            break
+
+        case "week" :
+            sortMethod = "week"
+            alteredPosts = [...posts].filter(post => 
+                post.createdAt >= Date.now() - (1000 * 60 * 60 * 24 * 7))
+            break
+
+        case "month" :
+            sortMethod = "month"
+            alteredPosts = [...posts].filter(post => 
+                post.createdAt >= Date.now() - (1000 * 60 * 60 * 24 * 30))
+            break
+    }
+    renderPosts(alteredPosts)
+    console.log(`sorted by ${value}`)
 }

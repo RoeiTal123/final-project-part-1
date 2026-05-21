@@ -4,130 +4,136 @@ let rendertMethod = "none"
 
 const posts = [
     {
-        _id: 1,
-        _ownerid: 1,
-        name: "moshe",
+        _id: '1',
+        _ownerid: '1',
         title: "bread",
         description: "bread",
         mediaType: "image",
         mediaUrl: "../design/images/cat images/DSC_6795.avif",
+        likedByUsers: ['2'],
         createdAt: 1767564832000
     },
 
     {
-        _id: 2,
-        _ownerid: 2,
-        name: "dana",
+        _id: '2',
+        _ownerid: '2',
         title: "Why does my cat scream at 3AM?",
         description: "Every single night she starts running around and yelling.",
         mediaType: "none",
         mediaUrl: "",
+        likedByUsers: ['1'],
         createdAt: 1775182306000
     },
 
     {
-        _id: 3,
-        _ownerid: 3,
-        name: "itay",
+        _id: '3',
+        _ownerid: '3',
         title: "Orange cat sleeping",
         description: "Caught him sleeping upside down again.",
         mediaType: "image",
         mediaUrl: "../design/images/cat images/DSC_6822.jpg",
+        likedByUsers: [],
         createdAt: 1773928849000
     },
 
     {
-        _id: 4,
-        _ownerid: 1,
-        name: "moshe",
+        _id: '4',
+        _ownerid: '1',
         title: "Tiny kitten attack",
         description: "She keeps attacking my shoelaces.",
         mediaType: "video",
         mediaUrl: "../design/videos/cat-video.mp4",
+        likedByUsers: ['2'],
         createdAt: 1772681104000
     },
 
     {
-        _id: 5,
-        _ownerid: 2,
-        name: "dana",
+        _id: '5',
+        _ownerid: '2',
         title: "Cat food recommendations?",
         description: "Looking for dry food for a picky cat.",
         mediaType: "none",
         mediaUrl: "",
+        likedByUsers: [],
         createdAt: 1770219087000
     },
 
     {
-        _id: 6,
-        _ownerid: 3,
-        name: "itay",
+        _id: '6',
+        _ownerid: '3',
         title: "Window watcher",
         description: "He sat here for 2 hours watching birds.",
         mediaType: "image",
         mediaUrl: "../design/images/cat images/Sphynx_cat.jpg",
+        likedByUsers: ['3', '4'],
         createdAt: 1771456721000
     },
 
     {
-        _id: 7,
-        _ownerid: 1,
-        name: "moshe",
+        _id: '7',
+        _ownerid: '1',
         title: "How do I stop scratching?",
         description: "My couch is losing the war.",
         mediaType: "none",
         mediaUrl: "",
+        likedByUsers: ['1', '3'],
         createdAt: 1778841205000
     },
 
     {
-        _id: 8,
-        _ownerid: 2,
-        name: "dana",
+        _id: '8',
+        _ownerid: '2',
         title: "Zoomies compilation",
         description: "Recorded the evening chaos.",
         mediaType: "video",
         mediaUrl: "../design/videos/zoomies.mp4",
+        likedByUsers: ['4', '1', '2', '3'],
         createdAt: 1776419923000
     },
 
     {
-        _id: 9,
-        _ownerid: 3,
-        name: "itay",
+        _id: '9',
+        _ownerid: '3',
         title: "Loaf mode activated",
         description: "Perfect loaf formation achieved.",
         mediaType: "image",
         mediaUrl: "../design/images/cat images/Russian_blue_cat.webp",
+        likedByUsers: ['1', '2'],
         createdAt: 1777654108000
     },
 
     {
-        _id: 10,
-        _ownerid: 1,
-        name: "moshe",
+        _id: '10',
+        _ownerid: '1',
         title: "Is my cat too fluffy?",
         description: "Summer is coming and he looks like a carpet.",
         mediaType: "none",
         mediaUrl: "",
+        likedByUsers: ['1'],
         createdAt: 1768892455000
     }
 ]
+
+let postsForRender = posts.filter(p => true)
+
+let userId = 4; // in this case
 
 function Main() {
     renderPosts()
 }
 
-function renderPosts(list = posts) {
-    console.log(list)
+function renderPosts(list = postsForRender) { // function that renders updates posts
+    // console.log(list)
     console.log("posts rendered")
-    const postsContainer = document.getElementById("posts-container")
+    const postsContainer = document.getElementById("posts-container") // creates a 'pointer' to the container so we could interract with it
     if (list != null) {
 
-        postsContainer.innerHTML = list.map(post => `
+        postsContainer.innerHTML = list.map(post => {
+            const liked = isLiked(post._id, userId); // checks is each post is liked by the loggedin user
+            return `
             <div class="post-box">
                 <div class="post-header">
-                           <a href="../htmls/profile.html?id=${post._ownerid}" class="post-user"></a>
+                           <a href="../htmls/profile.html?id=${post._ownerid}" class="post-user"></a> 
                            <div class="post-header-right">
                            <div class="post-date">${getTimeAgo(post.createdAt)}</div>
                            <div class="post-title">${post.title}</div>
@@ -135,21 +141,32 @@ function renderPosts(list = posts) {
                        </div>
                        <div class="post-description">${post.description}</div>
                        ${post.mediaType !== "none"
-                         ? `<div class="post-media">
+                    ? `<div class="post-media">
                                ${post.mediaType === "image"
-                                 ? `<img class="post-image" src="${post.mediaUrl}" />`
-                                 : `<video class="post-video" controls src="${post.mediaUrl}"></video>`
-                }
+                        ? `<img class="post-image" src="${post.mediaUrl}" />`
+                        : `<video class="post-video" controls src="${post.mediaUrl}"></video>`
+                    }
                 </div>`: ""}
-            <div class="post-footer">footer</div>
-            </div>`).
+                <div class="post-footer">
+                  <div class="like-btn" onclick="likePost('${post._id}')">
+                    <svg viewBox="0 -2 24 24" height="24px" id="meteor-icon-kit__solid-heart" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="${liked ? '0' : '0.24'}">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="${liked ? '#ff0000' : 'none'}"
+                     d="M21.4281 11.714L13.9092 19.2329C12.8548 20.2873 11.1452 20.2873 10.0908 19.2329L2.57191 11.714C-0.0315858 9.1105 -0.0315856 4.8894 2.57191 2.28591C5.17541 -0.31759 9.3965 -0.31759 12 2.28591C14.6035 -0.31759 18.8246 -0.31759 21.4281 2.28591C24.0316 4.8894 24.0316 9.1105 21.4281 11.714z"/>
+                    </g>
+                    </svg>
+                  </div>
+                </div>
+            </div>`;
+        }).
             join("")
     }
 }
 
 function getTimeAgo(timestamp) {
     const now = Date.now()
-    const diffMs = now - timestamp;
+    const diffMs = now - timestamp
 
     const seconds = Math.floor(diffMs / 1000)
     const minutes = Math.floor(seconds / 60)
@@ -171,40 +188,61 @@ function getTimeAgo(timestamp) {
     return `${days}d ago`
 }
 
-function alterPosts(value = rendertMethod) {
-    let alteredPosts
+function alterPosts(value = rendertMethod) { // function to sort / filter posts
+    let alteredPosts // variable for posts to alter
     if (value === rendertMethod) return
 
-    switch (value) {
+    switch (value) { // checks the value of the chosen input radio button
 
-        case "new" :
+        case "new":
             sortMethod = "new"
-            alteredPosts = [...posts].sort((a, b) => b.createdAt - a.createdAt)
-            break
+            alteredPosts = [...posts].sort((a, b) => b.createdAt - a.createdAt) // + = true so it sorts if gap in time is smaller because today < yestarday
+            break                                                               // the bigger the timestamp, the more time had passed
 
-        case "old" :
+        case "old":
             sortMethod = "old"
-            alteredPosts = [...posts].sort((a, b) => a.createdAt - b.createdAt)
-            break
-            
-        case "day" :
-            sortMethod = "day"
-            alteredPosts = [...posts].filter(post => 
-                post.createdAt >= Date.now() - (1000 * 60 * 60 * 24))
+            alteredPosts = [...posts].sort((a, b) => a.createdAt - b.createdAt) // - = false, does the opposite of the other sort
             break
 
-        case "week" :
+        case "day":
+            sortMethod = "day"
+            alteredPosts = [...posts].filter(post =>                            // filters based on value, timestamp is in miliseconds so 1=1 milisecond, 1000 = 1 second, 60000 = minute
+                post.createdAt >= Date.now() - (1000 * 60 * 60 * 24))           // 3,600,000 = hour, that x 24 = day
+            break
+
+        case "week":
             sortMethod = "week"
-            alteredPosts = [...posts].filter(post => 
+            alteredPosts = [...posts].filter(post =>                            // filters the same way but now day x 7 = week
                 post.createdAt >= Date.now() - (1000 * 60 * 60 * 24 * 7))
             break
 
-        case "month" :
+        case "month":
             sortMethod = "month"
-            alteredPosts = [...posts].filter(post => 
+            alteredPosts = [...posts].filter(post =>                            // filters the same way but now day x 30 = month
                 post.createdAt >= Date.now() - (1000 * 60 * 60 * 24 * 30))
             break
     }
+    postsForRender = [...alteredPosts];                                         // updates the list we use, not database itself
     renderPosts(alteredPosts)
-    console.log(`sorted by ${value}`)
+    console.log(`sorted / filtered by ${value}`)
+}
+
+function isLiked(postId, userId = userId) { // checks if post with id = postId is liked by user with id = Userid
+    const post = postsForRender.find(p => p._id === postId);
+    return post.likedByUsers.includes(userId); // checks if array has variable, so it checks if likedByUser[] has userId
+}
+
+function likePost(postId) { // likes or dislikes post if it's already liked or not
+    if (postId === null || postId === undefined) { // if id doesn't exist it can't work
+        return false;
+    }
+    const post = postsForRender.find(p => p._id === postId); // checks if an object in the array has ._id === postId and returns the first occurance
+                                                             // so it searchs for that post
+    const liked = isLiked(postId, userId) // checks if it's liked
+    if (liked) { // it's liked? remove the like
+        post.likedByUsers = post.likedByUsers.filter(id => id !== userId); // removes the like by filtering that user' id out
+    } else {
+        post.likedByUsers.push(userId); // adds the id in the end because the order doesn't matter
+    }
+    renderPosts(postsForRender); // renders the posts
 }

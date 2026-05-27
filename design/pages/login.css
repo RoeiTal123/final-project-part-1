@@ -86,9 +86,25 @@ h1{
   background-color: rgba(0, 0, 0, 0.02);
 }
 
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
 .textarea-box {
   height: auto;
   resize: vertical; 
+}
+
+.word-counter {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  font-size: 11px;
+  color: var(--primary-color);
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
 }
 
 .submit-btn {

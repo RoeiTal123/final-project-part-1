@@ -8,7 +8,7 @@
 
 <body>
     <header class="header">
-        <a a href="../htmls/main.html" class="logo"><img class="logo-img" src="../design/images/image.png" /></a>
+        <a href="../htmls/main.html" class="logo"><img class="logo-img" src="../design/images/image.png" /></a>
         <div class="on-right">
             <a href="../htmls/map.html" class="map-button">
                 <img class="map-logo" src="../design/images/image.png" />
@@ -30,7 +30,11 @@
                     <input class="input" type="text" id="username" name="username" placeholder="username" required><br><br>
                     <input class="input" type="password" id="password" name="password" placeholder="password" minlength="8" required><br><br>
                     <input class="input" type="date" id="dob" name="dob" required><br><br>
-                    <textarea class="input textarea-box" id="cat-likes" name="cat-likes" placeholder="What do you like about cats?" rows="4" required></textarea><br><br>
+                    <div class="textarea-container">
+                        <textarea class="input textarea-box" id="cat-likes" name="cat-likes" placeholder="What do you like about cats?" rows="4" oninput="countLetters(this)" required></textarea>
+                        <span class="word-counter" id="word-count-display">0/1000</span>
+                    </div>
+                    <br><br>
                     <input class="submit-btn" type="submit" value="OK">
                 <section>
             </form>

@@ -26,3 +26,17 @@ function formatPhoneNumber(event) {
         event.target.value = `${num.slice(0, 3)} ${num.slice(3, 6)}-${num.slice(6, 10)}`;
     }
 }
+
+function countLetters(textarea) {
+  const display = document.getElementById("word-count-display");
+  const maxLetters = 1000;
+
+  let letterCount = textarea.value.length;
+  
+  if (letterCount > maxLetters) {
+    textarea.value = textarea.value.slice(0, maxLetters);
+    letterCount = maxLetters;
+  }
+  
+  display.textContent = `${letterCount}/${maxLetters}`;
+}

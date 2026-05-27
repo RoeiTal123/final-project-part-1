@@ -20,7 +20,7 @@
     </header>
     <div class="body">
         <div class="login-window">
-            <form>
+            <form id="loginForm">
                 <section>
                     <h1>Login</h1>
                     <input class="input" type="text" oninput="removeNumbers(event)" id="fname" name="fname" placeholder="first name" required><br><br>
@@ -35,7 +35,7 @@
                         <span class="word-counter" id="word-count-display">0/1000</span>
                     </div>
                     <br><br>
-                    <input class="submit-btn" type="submit" value="OK">
+                    <input class="submit-btn" type="button" value="OK" onclick="submitForm()">
                 <section>
             </form>
         </div>

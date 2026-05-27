@@ -40,3 +40,16 @@ function countLetters(textarea) {
   
   display.textContent = `${letterCount}/${maxLetters}`;
 }
+
+function submitForm() {
+    const form = document.getElementById('loginForm');
+
+    if (!form.checkValidity()) {
+        form.reportValidity(); 
+        return;
+    }
+
+    console.log("Form submitted successfully!");
+
+    window.location.href = "main.html";
+}

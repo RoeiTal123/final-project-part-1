@@ -15,6 +15,15 @@ input[type="text"], input[type="tel"], input[type="email"] {
   cursor: text;
 }
 
+.body {
+  display: flex;         
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  min-height: calc(100vh - 96px); 
+  height: auto;
+}
+
 section {
   padding: 10px 20px;
   border-radius: 8px;
@@ -23,31 +32,6 @@ section {
 
 h1{
     text-decoration: underline var(--accent-color);
-}
-
-.input{
-  width: 100%;
-  box-sizing: border-box;
-
-  border: none; 
-  border-bottom: 2px solid var(--accent-color);
-  transition: border-bottom 0.2s ease, transform 0.1s ease;
-}
-
-.input:hover{
-  border: none; 
-  border-bottom: 2px solid var(--primary-color);
-}
-
-.input:focus{
-  outline: none;
-  border-bottom: 2px solid var(--primary-color);
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-.textarea-box {
-  height: auto;
-  resize: vertical; 
 }
 
 .login-window {
@@ -81,13 +65,30 @@ h1{
     }
 }
 
-.body {
-  display: flex;         
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;     
-  min-height: calc(100vh - 96px); 
+.input{
+  width: 100%;
+  box-sizing: border-box;
+
+  border: none; 
+  border-bottom: 2px solid var(--accent-color);
+  transition: border-bottom 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.input:hover{
+  border: none; 
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.input:focus{
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.textarea-box {
   height: auto;
+  resize: vertical; 
 }
 
 .submit-btn {

@@ -43,9 +43,38 @@ img {
     aspect-ratio: unset;
 }
 
+@media (min-width: 760px) {
+    .header {
+        display: flex;
+    }
+
+    .body {
+        margin-block-start: 96px;
+    }
+
+    .header-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .header {
+        display: none;
+    }
+
+    .body {
+        margin-block-start: 0;
+    }
+
+    .header-mobile {
+        display: flex;
+    }
+}
+
+
 .header {
     position: fixed;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     justify-content: space-between;
     height: 96px;
@@ -97,9 +126,23 @@ img {
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    margin-block-start: 96px;
     background-image: url(../images/Background.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.header-mobile{
+    flex-direction: row;
+    justify-content: space-between;
+    height: 96px;
+    background-color: #F5B277;
+    z-index: 1000;
+}
+
+.header-mobile .button-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
 }

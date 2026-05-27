@@ -147,7 +147,7 @@ function renderPosts(list = postsForRender) { // function that renders updates p
                 <div class="post-header">
                            <a href="../htmls/profile.html?id=${post._userid}" class="post-user"></a> 
                            <div class="post-header-right">
-                           <div>
+                           <div class="left">
                                <div class="post-user-name">${poster.fullname}</div>
                                <div class="post-title">${post.title}</div>
                            </div>

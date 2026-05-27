@@ -26,19 +26,17 @@ h1{
 }
 
 .input{
+  width: 100%;
+  box-sizing: border-box;
+
   border: none; 
   border-bottom: 2px solid var(--accent-color);
-  transition: border-bottom 0.2s ease, transform 0.1s ease; 
+  transition: border-bottom 0.2s ease, transform 0.1s ease;
 }
 
 .input:hover{
   border: none; 
   border-bottom: 2px solid var(--primary-color);
-}
-
-.textarea-box {
-  height: auto;
-  resize: vertical; 
 }
 
 .input:focus{
@@ -47,16 +45,30 @@ h1{
   background-color: rgba(0, 0, 0, 0.02);
 }
 
+.textarea-box {
+  height: auto;
+  resize: vertical; 
+}
+
 .login-window {
+  width: 40%; 
+  max-width: 500px;
+  min-width: 280px;
+
   background: rgba(255, 255, 255, 0.15); 
-
   backdrop-filter: blur(15px);
-
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
+
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .login-window {
+    width: 60%; 
+  }
 }
 
 .body {

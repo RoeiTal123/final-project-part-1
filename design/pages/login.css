@@ -65,10 +65,22 @@ h1{
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .login-window {
-    width: 60%; 
-  }
+@media (min-width: 1024px){
+    .login-window{
+      width: 40%;
+    }
+}
+
+@media (max-width: 1024px){
+    .login-window{
+      width: 60%;
+    }
+}
+
+@media (max-width: 760px){
+    .login-window{
+      width: 100%;
+    }
 }
 
 .body {

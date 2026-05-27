@@ -25,8 +25,8 @@
                     <legend>Login</legend>
                     <input type="text" oninput="removeNumbers(event)" id="fname" name="fname" placeholder="first name" required><br><br>
                     <input type="text" oninput="removeNumbers(event)" id="lname" name="lname" placeholder="last name" required><br><br>
-                    <input type="tel" oninput="removeLetters(event)" id="tel" name="tel" placeholder="phonenumber" pattern="[0-9]+" title="Please use only numbers [0-9]" required><br><br>
-                    <input type="email" id="email" name="email" placeholder="email" required><br><br>
+                    <input type="tel" oninput="formatPhoneNumber(event)" id="phone" name="phone" placeholder="phone number" maxlength="12" required><br><br>
+                    <input type="email" id="email" name="email" placeholder="email: local@domain.top" required><br><br>
                     <input type="text" id="username" name="username" placeholder="username" required><br><br>
                     <input type="password" id="password" name="password" placeholder="password" minlength="8" required><br>
                 </fieldset>

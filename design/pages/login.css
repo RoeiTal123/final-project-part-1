@@ -35,12 +35,17 @@ h1{
 .input:hover{
   border: none; 
   border-bottom: 2px solid var(--primary-color);
-  font-family: sans-serif;
 }
 
 .textarea-box {
   height: auto;
   resize: vertical; 
+}
+
+.input:focus{
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .login-window {

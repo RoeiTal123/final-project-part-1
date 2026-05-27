@@ -28,7 +28,6 @@ h1{
 .input{
   border: none; 
   border-bottom: 2px solid var(--accent-color);
-  font-family: sans-serif;
   transition: border-bottom 0.2s ease, transform 0.1s ease; 
 }
 

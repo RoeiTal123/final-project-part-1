@@ -4,7 +4,6 @@ fieldset {
     padding: 10px 20px;
     border-radius: 8px;
     border-style: hidden;
-    border-color: #fbcca3;
 }
 
 legend{
@@ -33,9 +32,10 @@ input{
 }
 
 .body {
+    display: flex;         
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 96px);
+    justify-content: center; 
+    align-items: center;     
+    min-height: calc(100vh - 96px); 
     height: auto;
 }

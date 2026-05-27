@@ -51,28 +51,26 @@ h1{
 }
 
 .login-window {
-  width: 40%; 
-  max-width: 500px;
-  min-width: 280px;
 
-  background: rgba(255, 255, 255, 0.15); 
+  background: rgba(255, 255, 255, 0.1); 
   backdrop-filter: blur(15px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  padding: 20px;
 
   box-sizing: border-box;
 }
 
 @media (min-width: 1024px){
     .login-window{
+      padding: 20px;
       width: 40%;
     }
 }
 
 @media (max-width: 1024px){
     .login-window{
+      padding: 20px;
       width: 60%;
     }
 }

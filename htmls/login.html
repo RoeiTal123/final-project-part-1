@@ -22,24 +22,13 @@
         <div class="login-window">
             <form>
                 <fieldset>
-                    <legend>Basic</legend>
-                    
-                    <label for="fname">First name:</label><br>
-                    <input type="text" id="fname" name="fname" placeholder="..." required><br>
-                    
-                    <label for="lname">Last name:</label><br>
-                    <input type="text" id="lname" name="lname" placeholder="..." required><br>
-
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Contact</legend>
-                    
-                    <label for="tel">Phone number:</label><br>
-                    <input type="tel" id="tel" name="tel" pattern="[0-9]+" title="Please use only numbers [0-9]" placeholder="..."  required><br>
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" title="Please use a valid email address format" required><br>
-                    
+                    <legend>Login</legend>
+                    <input type="text" id="fname" name="fname" placeholder="first name (john)" required><br><br>
+                    <input type="text" id="lname" name="lname" placeholder="last name" required><br><br>
+                    <input type="tel" id="tel" name="tel" placeholder="phonenumber" pattern="[0-9]+" title="Please use only numbers [0-9]" required><br><br>
+                    <input type="email" id="email" name="email" placeholder="email" required><br><br>
+                    <input type="text" id="username" name="username" placeholder="username" required><br><br>
+                    <input type="password" id="password" name="password" placeholder="password" minlength="8" required><br>
                 </fieldset>
                 <br>
                 <input type="submit" value="OK" class="submit-btn">

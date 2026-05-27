@@ -1,5 +1,22 @@
 @import "../general/general.css";
 
+fieldset {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-style: hidden;
+    border-color: #fbcca3;
+}
+
+legend{
+    text-decoration: underline #F5B277;
+}
+
+input{
+    border: none; 
+    border-bottom: 2px solid #e46b00;
+    font-family: sans-serif;
+}
+
 .login-window {
     background: rgba(255, 255, 255, 0.15); 
     

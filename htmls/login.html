@@ -27,8 +27,8 @@
                     <input class="input" type="text" oninput="removeNumbers(event)" id="lname" name="lname" placeholder="last name" required><br><br>
                     <input class="input" type="tel" oninput="formatPhoneNumber(event)" id="phone" name="phone" placeholder="phone number" maxlength="12" required><br><br>
                     <input class="input" type="email" id="email" name="email" placeholder="email: local@domain.top" required><br><br>
-                    <input class="input" type="text" id="username" name="username" placeholder="username" required><br><br>
-                    <input class="input" type="password" id="password" name="password" placeholder="password" minlength="8" required><br><br>
+                    <input class="input" type="text" id="username" name="username" pattern="[a-zA-Z0-9]+" placeholder="username" required><br><br>
+                    <input class="input" type="password" id="password" minlength="8" name="password" placeholder="password" minlength="8" required><br><br>
                     <input class="input" type="date" id="dob" name="dob" required><br><br>
                     <div class="textarea-container">
                         <textarea class="input textarea-box" id="cat-likes" name="cat-likes" placeholder="What do you like about cats?" rows="4" oninput="countLetters(this)" required></textarea>

@@ -1,5 +1,11 @@
 @import "../general/general.css";
 
-.map{
-    width: 100%;
+.map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: grab;
+    user-select: none;
+    min-width: 150vw; 
 }
+

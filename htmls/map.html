@@ -2,10 +2,12 @@
     <head>
         <title>Cat Sanctuary</title>
         <link rel="stylesheet" href="../design/pages/map.css">
+        <link rel="stylesheet" href="https://unpkg.com" />
+        <script src="../js/map.js" defer></script>
     </head>
     <body>
         <header class="header">
-            <a a href="../htmls/main.html" class="logo"><img class="logo-img" src="../design/images/image.png" /></a>
+            <a href="../htmls/main.html" class="logo"><img class="logo-img" src="../design/images/image.png" /></a>
             <div class="on-right">
                 <a href="../htmls/map.html" class="map-button">
                     <img class="map-logo" src="../design/images/image.png"/>
@@ -15,8 +17,8 @@
                 </a>
             </div>
         </header>
-        <div class="body">
-            <img class="map" src="../design/images/map.png">
+        <div class="map-container">
+            <img class="map" src="../design/images/map.png" draggable="false">
         </div>
     </body>
 </html>

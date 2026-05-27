@@ -5,7 +5,7 @@ let rendertMethod = "none"
 const posts = [
     {
         _id: '1',
-        _ownerid: '1',
+        _userid: '1',
         title: "bread",
         description: "bread",
         mediaType: "image",
@@ -16,7 +16,7 @@ const posts = [
 
     {
         _id: '2',
-        _ownerid: '2',
+        _userid: '2',
         title: "Why does my cat scream at 3AM?",
         description: "Every single night she starts running around and yelling.",
         mediaType: "none",
@@ -27,7 +27,7 @@ const posts = [
 
     {
         _id: '3',
-        _ownerid: '3',
+        _userid: '3',
         title: "Orange cat sleeping",
         description: "Caught him sleeping upside down again.",
         mediaType: "image",
@@ -38,7 +38,7 @@ const posts = [
 
     {
         _id: '4',
-        _ownerid: '1',
+        _userid: '1',
         title: "Tiny kitten attack",
         description: "She keeps attacking my shoelaces.",
         mediaType: "video",
@@ -49,7 +49,7 @@ const posts = [
 
     {
         _id: '5',
-        _ownerid: '2',
+        _userid: '2',
         title: "Cat food recommendations?",
         description: "Looking for dry food for a picky cat.",
         mediaType: "none",
@@ -60,7 +60,7 @@ const posts = [
 
     {
         _id: '6',
-        _ownerid: '3',
+        _userid: '3',
         title: "Window watcher",
         description: "He sat here for 2 hours watching birds.",
         mediaType: "image",
@@ -71,7 +71,7 @@ const posts = [
 
     {
         _id: '7',
-        _ownerid: '1',
+        _userid: '1',
         title: "How do I stop scratching?",
         description: "My couch is losing the war.",
         mediaType: "none",
@@ -82,7 +82,7 @@ const posts = [
 
     {
         _id: '8',
-        _ownerid: '2',
+        _userid: '2',
         title: "Zoomies compilation",
         description: "Recorded the evening chaos.",
         mediaType: "video",
@@ -93,7 +93,7 @@ const posts = [
 
     {
         _id: '9',
-        _ownerid: '3',
+        _userid: '3',
         title: "Loaf mode activated",
         description: "Perfect loaf formation achieved.",
         mediaType: "image",
@@ -104,7 +104,7 @@ const posts = [
 
     {
         _id: '10',
-        _ownerid: '1',
+        _userid: '1',
         title: "Is my cat too fluffy?",
         description: "Summer is coming and he looks like a carpet.",
         mediaType: "none",
@@ -114,12 +114,22 @@ const posts = [
     }
 ]
 
+const users =  [{_id: "1", username: "moshe", password: "moshedat", fullname: "moshe perets", mail: "moshe@dat.com", createdAt: 1778841205000,
+                birthday: 1021669200000, userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: ["1","4","7","10"]},
+                {_id: "2", username: "rebecca", password: "beccabec", fullname: "rebecca black", mail: "reb@becca.com", createdAt: 1778841205000,
+                birthday: 1021669200000, userType: "user", feedingStations: [], posts: ["2","5","8"]},
+                {_id: "3", username: "princess", password: "royalty", fullname: "princess dorothy", mail: "princess@cess.com", createdAt: 1778841205000,
+                birthday: 1021669200000, userType: "moderator", feedingStations: [], posts: ["3","6","9"]},
+                {_id: "4", username: "breado", password: "bread123", fullname: "breado bread", mail: "bread@b.com", createdAt: 1778841205000,
+                birthday: 1021669200000, userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: []}]
+
 let postsForRender = posts.filter(p => true)
 
 let userId = 4; // in this case
 
 function Main() {
-    renderPosts()
+    //renderPosts()
+    updateMainContent()
 }
 
 function renderPosts(list = postsForRender) { // function that renders updates posts
@@ -129,14 +139,19 @@ function renderPosts(list = postsForRender) { // function that renders updates p
     if (list != null) {
 
         postsContainer.innerHTML = list.map(post => {
-            const liked = isLiked(post._id, userId); // checks is each post is liked by the loggedin user
+            const liked = isLiked(post._id, userId) // checks is each post is liked by the loggedin user
+
+            const poster = users.find(user => user._id === post._userid)
             return `
             <div class="post-box">
                 <div class="post-header">
-                           <a href="../htmls/profile.html?id=${post._ownerid}" class="post-user"></a> 
+                           <a href="../htmls/profile.html?id=${post._userid}" class="post-user"></a> 
                            <div class="post-header-right">
+                           <div>
+                               <div class="post-user-name">${poster.fullname}</div>
+                               <div class="post-title">${post.title}</div>
+                           </div>
                            <div class="post-date">${getTimeAgo(post.createdAt)}</div>
-                           <div class="post-title">${post.title}</div>
                            </div>
                        </div>
                        <div class="post-description">${post.description}</div>
@@ -222,6 +237,7 @@ function alterPosts(value = rendertMethod) { // function to sort / filter posts
                 post.createdAt >= Date.now() - (1000 * 60 * 60 * 24 * 30))
             break
     }
+    handleSortChange(value)
     postsForRender = [...alteredPosts];                                         // updates the list we use, not database itself
     renderPosts(alteredPosts)
     console.log(`sorted / filtered by ${value}`)
@@ -245,4 +261,28 @@ function likePost(postId) { // likes or dislikes post if it's already liked or n
         post.likedByUsers.push(userId); // adds the id in the end because the order doesn't matter
     }
     renderPosts(postsForRender); // renders the posts
+}
+
+function handleSortChange(selectedSort) {
+    const url = new URL(window.location.href);
+    
+    url.searchParams.set('sort', selectedSort);
+    
+    window.history.pushState({}, '', url);
+    
+}
+
+function updateMainContent() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    const currentSort = urlParams.get('sort') || "new";
+
+    if (currentSort) {
+        const sortRadio = document.getElementById(currentSort);
+        if (sortRadio) {
+            sortRadio.checked = true; 
+        }
+    }
+    
+    alterPosts(currentSort);
 }

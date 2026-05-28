@@ -1,11 +1,78 @@
 @import "../general/general.css";
 
+.map-container{
+    flex-grow: 1;
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.map-container:active {
+  cursor: grabbing;     /* Changes cursor when holding down */
+}
+
 .map {
     position: absolute;
     top: 0;
     left: 0;
-    cursor: grab;
     user-select: none;
-    min-width: 150vw; 
+    width: 400%;
+    height: 400%;
+    
+    object-fit: cover;
+    pointer-events: none;
+    overflow: hidden;
 }
 
+.modal-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.modal-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    row-gap: 16px;
+    column-gap: 16px;
+    height: 480px;
+}
+
+.location-description{
+    grid-row: span 2;
+    height: 100%;
+    background-color: #D9D9D9;
+    border: 0;
+}
+
+.file-input{
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #F2EDE8;
+}
+
+.feeder-list{
+    grid-column: 2;
+    grid-row: 2;
+    background-color: #D9D9D9;
+}
+
+.modal-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.modal-buttons .cancel-button{
+    display: flex;
+    background-color: #DE7E7E;
+}
+
+.modal-buttons .confirm-button{
+    display: flex;
+    background-color: #7EF684;
+}
+
+/* DE7E7E */

@@ -115,17 +115,17 @@ const posts = [
 ]
 
 const users =  [{_id: "1", username: "moshe", password: "moshedat", fullname: "moshe perets", mail: "moshe@dat.com", createdAt: 1778841205000,
-                birthday: 1021669200000, userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: ["1","4","7","10"]},
+                birthday: 1021669200000, profilePicURL: "../design/images/profile pictures/man_1.avif", userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: ["1","4","7","10"]},
                 {_id: "2", username: "rebecca", password: "beccabec", fullname: "rebecca black", mail: "reb@becca.com", createdAt: 1778841205000,
-                birthday: 1021669200000, userType: "user", feedingStations: [], posts: ["2","5","8"]},
+                birthday: 1021669200000, profilePicURL: "../design/images/profile pictures/woman_1.avif", userType: "user", feedingStations: [], posts: ["2","5","8"]},
                 {_id: "3", username: "princess", password: "royalty", fullname: "princess dorothy", mail: "princess@cess.com", createdAt: 1778841205000,
-                birthday: 1021669200000, userType: "moderator", feedingStations: [], posts: ["3","6","9"]},
+                birthday: 1021669200000, profilePicURL: "../design/images/profile pictures/woman_2.jpg", userType: "moderator", feedingStations: [], posts: ["3","6","9"]},
                 {_id: "4", username: "breado", password: "bread123", fullname: "breado bread", mail: "bread@b.com", createdAt: 1778841205000,
-                birthday: 1021669200000, userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: []}]
+                birthday: 1021669200000, profilePicURL: "../design/images/profile pictures/man_2.jpg", userType: "feeder", feedingStations: [{_id: 1,status: "owner"}], posts: []}]
 
 let postsForRender = posts.filter(p => true)
 
-let userId = 4; // in this case
+let userId = "4"; // in this case
 
 function Main() {
     //renderPosts()
@@ -142,10 +142,13 @@ function renderPosts(list = postsForRender) { // function that renders updates p
             const liked = isLiked(post._id, userId) // checks is each post is liked by the loggedin user
 
             const poster = users.find(user => user._id === post._userid)
+            console.log(poster)
             return `
             <div class="post-box">
                 <div class="post-header">
-                           <a href="../htmls/profile.html?id=${post._userid}" class="post-user"></a> 
+                           <a href="../htmls/profile.html?id=${post._userid}" class="post-user">
+                           <img src="${poster.profilePicURL}" />
+                           </a> 
                            <div class="post-header-right">
                            <div class="left">
                                <div class="post-user-name">${poster.fullname}</div>
@@ -172,6 +175,7 @@ function renderPosts(list = postsForRender) { // function that renders updates p
                     </g>
                     </svg>
                   </div>
+                  <span>${post.likedByUsers.length}</span>
                 </div>
             </div>`;
         }).

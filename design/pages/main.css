@@ -109,9 +109,16 @@
 }
 
 .post-header .post-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 64px;
     width: 64px;
-    background-color: rgb(209, 32, 200);
+}
+
+.post-user img{
+    height: 64px;
+    width: 64px;
     border-radius: 50%;
 }
 
@@ -160,9 +167,10 @@
 .post-box .post-footer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     border-block-start: 1px solid black;
     padding: 16px;
+    gap: 16px;
     border-radius: 0 0 16px 16px;
     background-color: white;
 }

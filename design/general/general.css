@@ -105,6 +105,12 @@ img {
     gap: 16px;
 }
 
+.profile-button .profile-logo{
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}
+
 .map-button {
     display: flex;
     justify-content: center;

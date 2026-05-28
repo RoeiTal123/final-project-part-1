@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", Main)
 
+const DUMMY_USER = {
+    username: "catlover123",
+    password: "password123"
+};
+
 function Main () {
     console.log("Hello")
 }
@@ -54,8 +59,16 @@ function submitLoginForm() {
         form.reportValidity();
         return;
     }
-    console.log("Login form submitted successfully!");
-    window.location.href = "main.html";
+    const usernameInput = document.getElementById('login-username').value;
+    const passwordInput = document.getElementById('login-password').value;
+
+    if (usernameInput === DUMMY_USER.username && passwordInput === DUMMY_USER.password) {
+        console.log("Login form submitted successfully!");
+        window.location.href = "main.html";
+    } 
+    else {
+        alert("Invalid username or password. Please try again.");
+    }
 }
 
 function submitSignupForm() {

@@ -65,7 +65,6 @@ h1{
 .input{
   width: 100%;
   box-sizing: border-box;
-
   border: none; 
   border-bottom: 2px solid var(--accent-color);
   transition: border-bottom 0.2s ease, transform 0.1s ease;
@@ -123,4 +122,23 @@ h1{
 
 .submit-btn:active {
   transform: scale(0.95);    
+}
+
+.hidden {
+    display: none !important;
+}
+
+.toggle-container {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.toggle-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.toggle-container a:hover {
+    text-decoration: underline;
 }

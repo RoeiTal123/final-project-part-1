@@ -11,6 +11,11 @@ const container = document.getElementById('map-container')
 const map = document.getElementById('map-image')
 const rect = container.getBoundingClientRect()
 
+const locations = [{
+    _id: "1", locationName: "", indexs: { x: 1, y: 1 }, descriptionName: "",
+    locationImageURL: "", Feeders: ["2"], _ownerid: "1"
+}]
+
 function startMapDrag(event) {
     isDragging = true
     clickStartTime = Date.now()
@@ -102,12 +107,12 @@ function Main() {
     centerMap();
 }
 
-function setLocation(originalX, originalY){
+function setLocation(originalX, originalY) {
     const modalHeader = document.getElementById("modal-header")
-    modalHeader.innerHTML =`<span>Create new location</span><span class="coords">x: ${originalX} , y: ${originalY}</span>`
+    modalHeader.innerHTML = `<span>Create new location</span><span class="coords">x: ${originalX} , y: ${originalY}</span>`
 }
 
-function confirmLocation(){
+function confirmLocation() {
     const overlay = document.getElementById('modal-overlay')
 
     if (overlay.style.display === 'flex') {
@@ -116,4 +121,41 @@ function confirmLocation(){
         overlay.style.display = 'flex'
     }
     console.log("location added")
+}
+
+function renderNewLocationFeederList() {
+
+}
+
+function renderFeeders(locationId = "1") { // function that renders feeders of the location
+    // console.log(list)
+    console.log("feeders rendered")
+    const location = locations.find(locationInList => locationInList._id === locationId)
+    const feederids = [...location.Feeders]
+    const feedersContainer = document.getElementById("feeders-list") // creates a 'pointer' to the container so we could interract with it
+    if (feeders != null) {
+
+        feedersContainer.innerHTML = feederids.map(feederId => {
+
+            const feeder = users.find(user => user._id === feederId)
+            console.log(feeder)
+            if (!feeder) return ''
+
+            return `
+            <div class="feeder-box">
+            
+                <div class="feeder-left-group">
+                    <a href="../htmls/profile.html?id=${feederId}" class="feeder-user">
+                       <img src="${feeder.profilePicURL || 'default-avatar.png'}" alt="${feeder.fullname}'s avatar" />
+                    </a> 
+                    <div class="feeder-user-name">${feeder.fullname}</div>
+                </div>
+
+                <div class="feeder-role">
+                    ${(feeder._id === location._ownerid) ? 'owner' : 'feeder'}
+                </div>
+            </div>
+            `;
+        }).join('')
+    }
 }

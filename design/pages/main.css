@@ -84,7 +84,7 @@
     min-width: 360px;
     gap: 32px;
     overflow-y: auto;
-    scrollbar-color: lightgray white;
+    scrollbar-color: lightgray var(--white);
 }
 
 .cat-posts-box .post-box{
@@ -94,7 +94,7 @@
     width: 100%;
     border: 1px solid black;
     border-radius: 16px;
-    background: linear-gradient(to bottom, #FFFFFF 0%, #A4DAFB 100%);
+    background: linear-gradient(to bottom, var(--white) 0%, var(--blue-four) 100%);
 }
 
 .post-box .post-header{
@@ -164,7 +164,7 @@
     padding: 16px;
     gap: 16px;
     border-radius: 0 0 16px 16px;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .like-btn:hover {

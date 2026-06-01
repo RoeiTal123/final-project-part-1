@@ -1,10 +1,5 @@
 @import "../general/general.css";
 
-:root{
-  --primary-color: #e46b00;  
-  --accent-color: #F5B277;     
-}
-
 body, .body, .login-window, fieldset, legend, label {
   user-select: none;
   cursor: default;
@@ -104,8 +99,8 @@ h1{
 }
 
 .submit-btn {
-  background-color: #e46b00;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   border: none;
   border-radius: 6px;
   padding: 10px 24px;
@@ -116,8 +111,8 @@ h1{
 }
 
 .submit-btn:hover {
-  background-color: #F5B277; 
-  color: #e46b00;           
+  background-color: var(--accent-color); 
+  color: var(--primary-color);           
 }
 
 .submit-btn:active {
@@ -135,7 +130,7 @@ h1{
 }
 
 .toggle-container a {
-    color: #007bff;
+    color: var(--blue-two);
     text-decoration: none;
 }
 

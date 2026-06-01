@@ -31,9 +31,40 @@
             </div>
             <div><span>Location name: </span><input type="text" placeholder="location name" name="locationName"/></div>
             <div class="modal-grid">
-                <input class="location-description" id="location-description" placeholder="describe the location here"/>
-                <input class="file-input" type="file"/>
-                <div class="feeder-list" id="feeder-list">list here</div>
+                <textarea class="location-description" id="location-description" placeholder="describe the location here"></textarea>
+                <div class="file-input">  
+                <input class="file-input-button" type="file" id="file-input"/>
+                <label for="file-input">
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" fill="var(--black)">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                    <defs>
+
+                    <style>.cls-1{fill:none;stroke:var(--gray-three);stroke-miterlimit:10;stroke-width:1.91px;}</style>
+
+                    </defs>
+
+                    <rect class="cls-1" x="1.5" y="1.5" width="21" height="21"/>
+
+                    <polyline class="cls-1" points="1.5 19.64 8.18 12.96 13.91 18.68 17.73 14.86 22.5 19.64"/>
+
+                    <circle class="cls-1" cx="13.91" cy="8.18" r="1.91"/>
+
+                    </g>
+
+                    </svg>
+                </label>
+                </div>
+                <div class="feeder-list-box" id="feeder-list">list here
+                    <div class="feeder-list">
+
+                    </div>
+                </div>
             </div>
             <div class="modal-buttons">
                 <button class="cancel-button" onclick="toggleModal()">Cancel</button>

@@ -68,7 +68,7 @@ function stopMapDrag() {
         const originalX = Math.round(mouseXInContainer - mapX)
         const originalY = Math.round(mouseYInContainer - mapY)
 
-        console.log(`Original Map Target -> X: ${originalX}px, Y: ${originalY}px`)
+       // console.log(`Original Map Target -> X: ${originalX}px, Y: ${originalY}px`)
 
         // You can trigger your popup window here now!
         toggleModal(originalX, originalY)

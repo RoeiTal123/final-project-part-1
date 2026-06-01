@@ -6,7 +6,7 @@ const DUMMY_USER = {
 };
 
 function Main () {
-    console.log("Hello")
+    
 }
 
 function showSignup(event) {

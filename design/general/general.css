@@ -192,3 +192,9 @@ textarea{
     align-items: center;
     width: calc(100% / 3);
 }
+
+.button-box .profile-logo{
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}

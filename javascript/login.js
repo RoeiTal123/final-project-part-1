@@ -21,7 +21,6 @@ function showLogin(event) {
     document.getElementById('loginWindow').classList.remove('hidden');
 }
 
-
 function removeNumbers(event) {
     event.target.value = event.target.value.replace(/\d/g, '');
 }
